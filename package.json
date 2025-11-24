@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && tsc -p server/tsconfig.json",
+    "build:backend": "tsc -p server/tsconfig.json",
+    "build:frontend": "vite build",
+    "build": "npm run build:backend && npm run build:frontend",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "node dist/index.js"
