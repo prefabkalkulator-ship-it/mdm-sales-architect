@@ -3,6 +3,10 @@
 # ==========================================
 FROM node:20-alpine AS builder
 
+# (Wstawić na początku Etapu 1, zaraz po FROM node:20-alpine AS builder)
+# Krok dodaje narzędzia kompilacji
+RUN apk add --no-cache python3 make g++
+
 # Set working directory
 WORKDIR /app
 
