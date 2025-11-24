@@ -1,0 +1,18 @@
+{
+    "extends": "../tsconfig.node.json",
+    "compilerOptions": {
+        "noEmit": false,
+        "outDir": "../dist",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ES2022",
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "allowImportingTsExtensions": false,
+        "esModuleInterop": true,
+        "rootDir": "."
+    },
+    "include": [
+        "index.ts"
+    ]
+}

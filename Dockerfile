@@ -7,15 +7,14 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Install dependencies
-# Copying package files first to leverage Docker cache
 COPY package*.json ./
-# Use npm ci for clean, deterministic installation
 RUN npm ci
 
-# Copy the rest of the application code
+# Copy source code
 COPY . .
 
-# Build the React application (Vite)
+# Build the application (Vite + Server TypeScript)
+# This runs: tsc -b && vite build && tsc -p server/tsconfig.json
 RUN npm run build
 
 # ==========================================
@@ -33,15 +32,13 @@ ENV NODE_ENV=production
 COPY package*.json ./
 RUN npm ci --only=production
 
-# Copy built assets from the builder stage
+# Copy built assets from builder stage
+# dist now contains both the frontend assets and the compiled server.js
 COPY --from=builder /app/dist ./dist
-# Copy the server script
-COPY --from=builder /app/server.js ./
 
 # Cloud Run sets the PORT environment variable.
-# We expose port 8080 as a default documentation.
 ENV PORT=8080
 EXPOSE 8080
 
-# Start the proxy server
-CMD ["node", "server.js"]
+# Start the compiled server
+CMD ["npm", "start"]
