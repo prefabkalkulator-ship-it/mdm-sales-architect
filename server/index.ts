@@ -12,7 +12,7 @@ const PORT = parseInt(process.env.PORT || '8080');
 app.use(express.static(path.join(__dirname, 'client')));
 
 // Handle SPA routing: return index.html for all non-static requests
-app.get('*', (_req: Request, res: Response) => {
+app.get(/(.*)/, (_req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, 'client', 'index.html'));
 });
 
