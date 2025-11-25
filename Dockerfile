@@ -40,6 +40,9 @@ RUN npm ci --only=production
 # dist now contains both the frontend assets and the compiled server.js
 COPY --from=builder /app/dist ./dist
 
+# Copy RAG data files
+COPY --from=builder /app/src/data ./src/data
+
 # Cloud Run sets the PORT environment variable.
 ENV PORT=8080
 EXPOSE 8080
