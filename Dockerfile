@@ -1,51 +1,39 @@
-# ==========================================
-# Stage 1: Builder
-# ==========================================
-FROM node:20-alpine AS builder
-
-# (Wstawić na początku Etapu 1, zaraz po FROM node:20-alpine AS builder)
-# Krok dodaje narzędzia kompilacji
-RUN apk add --no-cache python3 make g++
-
-# Set working directory
+# Etap 1: Builder (Debian Slim)
+FROM node:20-slim AS builder
 WORKDIR /app
 
-# Install dependencies
+# Instalacja narzędzi kompilacji (wymagane dla niektórych modułów node)
+RUN apt-get update && apt-get install -y python3 make g++ build-essential
+
+# Kopiowanie plików konfiguracyjnych
 COPY package*.json ./
+COPY tsconfig*.json ./
+# Ensure server directory exists for tsconfig copy if needed, though COPY creates dest
+COPY server/tsconfig.json server/
+
+# Czysta instalacja zależności
 RUN npm ci
 
-# Copy source code
+# Kopiowanie kodu źródłowego
 COPY . .
 
-# Build the application (Vite + Server TypeScript)
-# This runs: tsc -b && vite build && tsc -p server/tsconfig.json
+# Budowanie (Backend + Frontend)
 RUN npm run build
 
-# ==========================================
-# Stage 2: Runner (Production Proxy Server)
-# ==========================================
-FROM node:20-alpine AS runner
-
-# Set working directory
+# Etap 2: Runner (Debian Slim)
+FROM node:20-slim AS runner
 WORKDIR /app
 
-# Set environment to production
-ENV NODE_ENV=production
-
-# Install only production dependencies
+# Instalacja tylko zależności produkcyjnych
 COPY package*.json ./
 RUN npm ci --only=production
 
-# Copy built assets from builder stage
-# dist now contains both the frontend assets and the compiled server.js
+# Kopiowanie zbudowanej aplikacji
 COPY --from=builder /app/dist ./dist
 
-# Copy RAG data files
-COPY --from=builder /app/src/data ./src/data
+# Kopiowanie plików RAG (danych)
+# Ensure destination directory exists or COPY will create it
+COPY src/data /app/src/data
 
-# Cloud Run sets the PORT environment variable.
-ENV PORT=8080
 EXPOSE 8080
-
-# Start the compiled server
 CMD ["npm", "start"]
