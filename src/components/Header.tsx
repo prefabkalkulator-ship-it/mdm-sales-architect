@@ -25,7 +25,7 @@ const Header: React.FC = () => {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent'
             }}>
-                MDM Sales Architect
+                Wirtualny Pomocnik MDM Energy (Wersja V6)
             </h1>
         </header>
     );
