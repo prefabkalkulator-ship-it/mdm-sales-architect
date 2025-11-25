@@ -1,31 +1,17 @@
-import { log_interaction_data, calculate_base_cost_estimate, request_sales_callback } from './geminiTools';
+import { log_interaction_data, request_sales_callback, generate_interior_render } from './geminiTools';
+// @ts-ignore
+import ragText from '../data/baza_wiedzy_mdm.txt?raw';
 
 export const SYSTEM_PROMPT = `
-Jesteś 'Wirtualny Architekt Sprzedaży' (Sales Architect) dla firmy 'MDM EnErgy', specjalizującej się w budowie domów prefabrykowanych. Twoja misja to rygorystyczna kwalifikacja klienta w lejkach sprzedażowych.
-
-KONTEKST DANYCH (RAG):
-1. **[KNOWLEDGE_BASE]:** baza_wiedzy_mdm.txt (JEDYNE ŹRÓDŁO PRAWDY).
-
-🔥 OGRANICZENIA KWALIFIKACYJNE (MUST-FOLLOW CONSTRAINTS):
-1. **PRIORYTET WIEDZY (RAG ENFORCEMENT):** TWOIM ABSOLUTNYM PRIORYTETEM jest szukanie odpowiedzi w pliku [KNOWLEDGE_BASE]. Jeśli pytanie dotyczy technologii, budowy, materiałów (np. KVH, REI, ściany) – MUSISZ zacytować informacje z tego dokumentu. Użycie standardowej odpowiedzi ("Służę pomocą...") w przypadku pytań technicznych jest ZABRONIONE.
-
-2. **Pytania o Cenę (CENOWY BOT):**
-    - Wymagaj 3 parametrów (Model, Opcja, Odległość).
-    - **ZAKAZ LICZENIA (NO-MATH RULE):** Jeśli użytkownik prosi o sumowanie kosztów (np. 'Ile to będzie razem z fundamentem?'), ODMÓW grzecznie wykonania obliczeń.
-    - **Wzorzec odpowiedzi:** 'Jako Wirtualny Pomocnik nie wykonuję precyzyjnych kalkulacji matematycznych, ponieważ ostateczna cena zależy od zbyt wielu zmiennych (warunki gruntowe, lokalizacja). Mogę podać ceny składowe, ale po faktyczną wycenę zapraszam do formularza.'
-    - **Prezentacja Cen:** Podawaj ceny z [KNOWLEDGE_BASE] wyłącznie jako informacje o "możliwych dopłatach" lub "cenie bazowej", a nie jako ostateczną sumę.
-    - **Obowiązkowy Disclaimer:** Do KAŻDEJ odpowiedzi zawierającej jakąkolwiek kwotę, musisz dokleić formułkę:
-      *'Pamiętaj, że podane ceny są orientacyjne i zależą od wielu zmiennych. Faktyczną, wiążącą wycenę możesz uzyskać tylko wypełniając Formularz Wyceny MDM.'*
-    - **Form Link**: ALWAYS use \`[Formularz Wyceny MDM](https://forms.gle/cUXUqb9E51UHf6vU8)\`.
-    - **Email Link**: ALWAYS use \`[prefab@mdmenergy.pl](mailto:prefab@mdmenergy.pl)\` (especially in escalation).
-
-3. **Pytania Wizualne (RENDER BOT):** Wymagaj 2 atrybutów (Widok, Styl), a następnie użyj funkcji \`generate_interior_render\`.
-
-4. **Dyrektywa Eskalacji:** Użyj funkcji \`request_sales_callback\` po pozytywnej kwalifikacji LUB po 3 nieudanych próbach uzyskania kluczowych danych (Impas/Blokada).
-
-5. **Dyrektywa Statystyk (Ciche Logowanie):** ZAWSZE, przed zwróceniem odpowiedzi do klienta, użyj funkcji \`log_interaction_data\` do rejestracji następujących zdarzeń: PRICE_REQUEST_ATTEMPT, VISUALIZATION_GENERATED, ESCALATION_INITIATED, RAG_QUERY_SUCCESS.
-
-[TON_OF_VOICE]: Rygorystyczny profesjonalista, ekspert.
+Jesteś Wirtualnym Pomocnikiem Klienta MDM Energy.
+Twoja wiedza pochodzi WYŁĄCZNIE z załączonego pliku tekstowego [KNOWLEDGE_BASE].
+ZASADY ODPOWIADANIA:
+1. **Ceny:** Jeśli klient pyta o cenę (np. MDM74), znajdź ją w pliku i PODAJ (np. 'Ok. 393 920 PLN'). Dodaj dopisek: 'To cena orientacyjna. Faktyczną wycenę uzyskasz tutaj: [Formularz Wyceny MDM](https://forms.gle/cUXUqb9E51UHf6vU8)'.
+2. **Linki:** ZAWSZE używaj formatu Markdown:
+   - [Formularz Wyceny MDM](https://forms.gle/cUXUqb9E51UHf6vU8)
+   - [Napisz e-mail](mailto:prefab@mdmenergy.pl)
+3. **Brak wiedzy:** Jeśli w pliku nie ma odpowiedzi, nie zmyślaj. Napisz: 'To wymaga konsultacji z ekspertem. Proszę o kontakt: [Napisz e-mail](mailto:prefab@mdmenergy.pl)'.
+4. **Styl:** Bądź pomocny, krótki i konkretny.
 `;
 
 export interface ChatMessage {
@@ -34,126 +20,108 @@ export interface ChatMessage {
 }
 
 /**
- * Simulates the Gemini interaction loop.
- * In a real app, this would send the message to the Gemini API.
- * Here, we simulate the logic and the "Silent Logging" tool calls.
+ * Simulates the Gemini interaction loop with Pure RAG logic.
+ * It searches the imported text file for answers.
  */
 export const processUserMessage = async (userMessage: string): Promise<string> => {
-    // 1. Log RAG_QUERY_SUCCESS for every user message as per directive (simulating successful retrieval)
-    // Simulate checking for RAG files
-    const ragFiles = ['baza_wiedzy_mdm.txt'];
-    // In a real app, we would check if these files exist or are loaded in the context
-    const ragLoaded = true;
-
-    if (ragLoaded) {
-        log_interaction_data('RAG_QUERY_SUCCESS', `Context loaded from ${ragFiles.join(', ')}. User query: "${userMessage}"`);
-    } else {
-        console.warn("RAG files not found");
-    }
-
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 800));
 
     const lowerMsg = userMessage.toLowerCase();
 
-    // 0. Check for Escalation/Impasse (User refuses to provide data)
-    if (lowerMsg.includes('nie chcę') || lowerMsg.includes('nie podam') || lowerMsg.includes('nie będę') || lowerMsg.includes('po prostu powiedz') || lowerMsg.includes('nie lubię formularzy') || lowerMsg.includes('natychmiast') || lowerMsg.includes('nie wypełniam')) {
-        request_sales_callback("Client Refusal/Impasse", userMessage);
-        log_interaction_data('ESCALATION_INITIATED', `User refused to provide data: "${userMessage}"`);
-        return `Rozumiem, że wolisz szybszą ścieżkę. Jako AI muszę trzymać się procedur, ale szanuję Twój czas. Przekazuję Twoją sprawę bezpośrednio do Starszego Doradcy.
+    // Log the query attempt
+    log_interaction_data('RAG_QUERY_ATTEMPT', `Searching knowledge base for: "${userMessage}"`);
 
-Aby przyspieszyć kontakt, proszę podaj swój numer telefonu.
+    // 1. Check for specific Model Price Query (e.g., "Cena MDM 74", "MDM74")
+    const modelMatch = userMessage.match(/MDM\s?(\d+|Optimal\s?\d+|Stodoła\s?\d+|Z\d+[A-Z]?)/i);
 
-Możesz też skontaktować się z nami bezpośrednio:
-📞 +48 533 989 987
-📧 prefab@mdmenergy.pl`;
-    }
+    if (modelMatch || lowerMsg.includes('cena') || lowerMsg.includes('koszt')) {
+        // Try to find the specific model section in the RAG text
+        const modelName = modelMatch ? modelMatch[0].replace(/\s+/g, ' ') : null;
 
-    // 2. Simulate "Silent Logging" based on intent detection
-    // In a real scenario, the model would generate a tool call for log_interaction_data.
-    // We are simulating that behavior here "frontend-side" as requested.
+        if (modelName) {
+            // Simple search strategy: Find the line containing the model name and "cena"
+            const lines = ragText.split('\n');
+            let foundSection = "";
+            let capturing = false;
 
-    // Check for specific model and option in the message
-    const modelMatch = userMessage.match(/MDM\s?(\d+)/i);
-    const optionMatch = lowerMsg.includes('deweloperski') ? 'Stan Deweloperski' :
-        lowerMsg.includes('surowy') ? 'Stan Surowy' : null;
-    const distanceMatch = lowerMsg.includes('odległość') || lowerMsg.includes('km') || lowerMsg.includes('budowa');
+            // Normalize search term (e.g. MDM74 -> MDM 74 or MDM Optimal 74)
+            // We search for the number mainly if it's MDM
+            const numberMatch = modelName.match(/\d+/);
+            const searchNumber = numberMatch ? numberMatch[0] : "";
 
-    // 0. Immediate match for all 3 parameters (Model + Option + Distance)
-    if (modelMatch && optionMatch && distanceMatch) {
-        const model = `MDM${modelMatch[1]}`;
-        const option = optionMatch;
-        const distNumMatch = userMessage.match(/(\d+)\s?km/i);
-        const distance = distNumMatch ? `${distNumMatch[1]} km` : "100 km";
+            for (const line of lines) {
+                if (line.toLowerCase().includes(`mdm`) && line.includes(searchNumber) && line.toLowerCase().includes('cena')) {
+                    capturing = true;
+                    foundSection += line + "\n";
+                    continue;
+                }
+                if (capturing) {
+                    if (line.startsWith('###') || line.startsWith('Pytanie:')) {
+                        capturing = false;
+                        break; // Stop capturing at next section
+                    }
+                    foundSection += line + "\n";
+                }
+            }
 
-        // NO-MATH RULE: We do NOT calculate price here anymore.
-        // We rely on the model to use RAG data to provide base prices or surcharges.
-        // For simulation purposes, we just log and return a placeholder that invites the model to answer from RAG.
-
-        log_interaction_data('PRICE_CALCULATED', `Price request for ${model}, ${option}, ${distance} (No-Math Strategy)`);
-
-        // In a real RAG system, the model would generate the text based on the txt file.
-        // Since we are mocking the response here, we return a generic "found data" response
-        // that adheres to the new guidelines.
-
-        return `Dziękuję. Mam już komplet danych:
-- Model: **${model}**
-- Opcja: **${option}**
-- Odległość: **${distance}**
-
-Jako Wirtualny Pomocnik nie wykonuję precyzyjnych kalkulacji matematycznych, ponieważ ostateczna cena zależy od zbyt wielu zmiennych (warunki gruntowe, lokalizacja). Mogę podać ceny składowe z naszej bazy wiedzy, ale po faktyczną wycenę zapraszam do formularza.
-
-*Pamiętaj, że podane ceny są orientacyjne i zależą od wielu zmiennych. Faktyczną, wiążącą wycenę możesz uzyskać tylko wypełniając Formularz Wyceny MDM.*
-
-Aby otrzymać wiążącą ofertę, wypełnij formularz: [https://forms.gle/cUXUqb9E51UHf6vU8]`;
-    }
-
-    if (lowerMsg.includes('cena') || lowerMsg.includes('koszt') || lowerMsg.includes('ile kosztuje')) {
-        log_interaction_data('PRICE_REQUEST_ATTEMPT', `User asked for price info: "${userMessage}"`);
-
-        if (modelMatch && optionMatch && !distanceMatch) {
-            return `Widzę, że interesuje Cię model **MDM${modelMatch[1]}** w opcji **${optionMatch}**. Aby podać finalną cenę, potrzebuję jeszcze jednej informacji: **Kategoria odległości** placu budowy (np. do 100km, 100-200km, itd.).`;
+            if (foundSection.trim().length > 0) {
+                log_interaction_data('RAG_QUERY_SUCCESS', `Found price data for ${modelName}`);
+                return `Znalazłem informacje o modelu **${modelName}**:\n\n${foundSection.trim()}\n\nTo cena orientacyjna. Faktyczną wycenę uzyskasz tutaj: [Formularz Wyceny MDM](https://forms.gle/cUXUqb9E51UHf6vU8)`;
+            }
         }
-
-        return "Aby przygotować precyzyjną wycenę, potrzebuję od Ciebie trzech informacji: jaki Model domu Cię interesuje, jaką Opcję wykończenia wybierasz oraz jaka jest Kategoria odległości placu budowy?";
     }
 
-    // Handle follow-up for distance (Heuristic for demo flow)
-    if (distanceMatch && !lowerMsg.includes('bez stanu deweloperskiego')) {
-        const model = "MDM74";
-        const option = "Stan Deweloperski";
-        const distance = "100 km";
+    // 2. Technical/General Questions (Search by keywords)
+    const keywords = ['rei', 'kvh', 'ściany', 'strop', 'czas', 'gwarancja', 'ogni', 'akusty', 'technolog', 'standard', 'deweloperski'];
+    for (const keyword of keywords) {
+        if (lowerMsg.includes(keyword)) {
+            const lines = ragText.split('\n');
+            let bestAnswer = "";
 
-        log_interaction_data('PRICE_CALCULATED', `Price request for ${model}, ${option}, ${distance} (No-Math Strategy)`);
+            // Find a Q&A section containing the keyword
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].toLowerCase().includes(keyword)) {
+                    // Look backwards for the start of the Question
+                    let startIdx = i;
+                    while (startIdx > 0 && !lines[startIdx].startsWith('###') && !lines[startIdx].startsWith('Pytanie:')) {
+                        startIdx--;
+                    }
 
-        return `Dziękuję. Mam już komplet danych:
-- Model: **${model}**
-- Opcja: **${option}**
-- Odległość: **${distance}**
+                    // Capture until next section
+                    let endIdx = startIdx + 1;
+                    while (endIdx < lines.length && !lines[endIdx].startsWith('###') && !lines[endIdx].startsWith('Pytanie:')) {
+                        endIdx++;
+                    }
 
-Jako Wirtualny Pomocnik nie wykonuję precyzyjnych kalkulacji matematycznych, ponieważ ostateczna cena zależy od zbyt wielu zmiennych.
+                    const section = lines.slice(startIdx, endIdx).join('\n');
+                    if (section.length > 20) { // meaningful length
+                        bestAnswer = section;
+                        break; // Return first good match
+                    }
+                }
+            }
 
-*Pamiętaj, że podane ceny są orientacyjne i zależą od wielu zmiennych. Faktyczną, wiążącą wycenę możesz uzyskać tylko wypełniając Formularz Wyceny MDM.*
-
-Aby otrzymać wiążącą ofertę, wypełnij formularz: [https://forms.gle/cUXUqb9E51UHf6vU8]`;
+            if (bestAnswer) {
+                log_interaction_data('RAG_QUERY_SUCCESS', `Found technical info for keyword: ${keyword}`);
+                return `${bestAnswer.trim()}\n\n[Formularz Wyceny MDM](https://forms.gle/cUXUqb9E51UHf6vU8)`;
+            }
+        }
     }
 
-    if (lowerMsg.includes('wizualizacj') || lowerMsg.includes('wygląda') || lowerMsg.includes('zdjęcie')) {
-        log_interaction_data('VISUALIZATION_GENERATED', `User asked for visualization: "${userMessage}"`);
-        // Note: In a real flow, we might call generate_interior_render here too if we had params.
-        return "Chętnie przygotuję wizualizację. Proszę podaj jaki Widok (np. salon, kuchnia) oraz Styl (np. nowoczesny, skandynawski) Cię interesuje?";
+    // 3. Visualization Request
+    if (lowerMsg.includes('wizualizacj') || lowerMsg.includes('wygląda')) {
+        log_interaction_data('VISUALIZATION_GENERATED', `User asked for visualization`);
+        return generate_interior_render('salon', 'nowoczesny');
     }
 
-    if (lowerMsg.includes('kontakt') || lowerMsg.includes('człowiek') || lowerMsg.includes('doradc')) {
-        log_interaction_data('ESCALATION_INITIATED', `User requested human contact: "${userMessage}"`);
-        return "Rozumiem. Przekazuję Twoje zgłoszenie do naszego działu sprzedaży. Skontaktujemy się z Tobą wkrótce.";
+    // 4. Escalation/Contact
+    if (lowerMsg.includes('kontakt') || lowerMsg.includes('doradc') || lowerMsg.includes('człowiek')) {
+        request_sales_callback("User requested contact", userMessage);
+        return "To wymaga konsultacji z ekspertem. Proszę o kontakt: [Napisz e-mail](mailto:prefab@mdmenergy.pl)";
     }
 
-    if (lowerMsg.includes('rei') || lowerMsg.includes('kvh') || lowerMsg.includes('drewn') || lowerMsg.includes('technolog')) {
-        log_interaction_data('RAG_QUERY_SUCCESS', `Technical query matched in [KNOWLEDGE_BASE]. User query: "${userMessage}"`);
-        return "Zgodnie z dokumentacją techniczną [KNOWLEDGE_BASE]:\n1. Nasze panele ścienne posiadają klasę odporności ogniowej **REI 60**.\n2. Konstrukcja szkieletowa oparta jest wyłącznie na certyfikowanym, suszonym komorowo i struganym czterostronnie drewnie **KVH C24**.";
-    }
-
-    // Default response falling back to "Rygorystyczny profesjonalista" persona
-    return "Jako Wirtualny Pomocnik Klienta MDM Energy, służę pomocą w kwestiach dotyczących naszych domów. Proszę o sprecyzowanie pytania.";
+    // 5. Fallback (No knowledge found)
+    log_interaction_data('RAG_QUERY_FAILURE', `No info found for: "${userMessage}"`);
+    return "To wymaga konsultacji z ekspertem. Proszę o kontakt: [Napisz e-mail](mailto:prefab@mdmenergy.pl)";
 };
