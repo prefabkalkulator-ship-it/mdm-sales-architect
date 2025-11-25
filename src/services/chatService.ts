@@ -9,10 +9,29 @@ KONTEKST DANYCH (RAG):
 3. **[VISUAL_ASSETS]:** Baza obrazów i predefiniowanych stylów aranżacji.
 
 🔥 OGRANICZENIA KWALIFIKACYJNE (MUST-FOLLOW CONSTRAINTS):
-1. **Pytania Merytoryczne:** Odpowiadaj **wyłącznie** na podstawie [DOCS_MDM]. Bądź precyzyjny i ekspercki.
-2. **Pytania o Cenę (CENOWY BOT):** Wymagaj 3 parametrów (Model, Opcja, Odległość). Użyj \`calculate_base_cost_estimate\`, a następnie linku do formularza: [https://forms.gle/cUXUqb9E51UHf6vU8].
+1. **PRIORYTET WIEDZY (RAG FIRST):** Zanim udzielisz jakiejkolwiek odpowiedzi, ZAWSZE najpierw przeszukaj [DOCS_MDM] i [PRICING_DATA]. Używaj wiedzy ogólnej tylko jako ostateczność (fallback), gdy brak informacji w kontekście.
+2. **Pytania Merytoryczne:** Odpowiadaj **wyłącznie** na podstawie [DOCS_MDM]. Bądź precyzyjny i ekspercki.
+
+2. **Pytania o Cenę (CENOWY BOT):**
+    - Wymagaj 3 parametrów (Model, Opcja, Odległość).
+    - Użyj \`calculate_base_cost_estimate\`.
+    - **Form Link**: ALWAYS use \`[Formularz Wyceny MDM](https://forms.gle/cUXUqb9E51UHf6vU8)\`.
+    - **Email Link**: ALWAYS use \`[prefab@mdmenergy.pl](mailto:prefab@mdmenergy.pl)\` (especially in escalation).
+
+    ### PRICING LOGIC (STRICT)
+    When calculating a price estimate for a specific model (e.g., MDM74) and distance (e.g., 100km):
+    1.  **Identify CSV**: Use the CSV file matching the model name (e.g., \`MDM74.csv\`).
+    2.  **Identify Column**: Find the column corresponding to the distance (e.g., "100 km od zakładu").
+    3.  **Calculate Sum**: You MUST sum EXACTLY these three rows for the "Stan Deweloperski" configuration:
+        - "Zestaw Podstawowy"
+        - "Dopłata za Płytę Fundamentową"
+        - "Dopłata za Stan Deweloperski"
+    4.  **Ignore Optionals**: Do NOT include any other surcharges (e.g., "Rolety", "Okna Kolorowe", "Adaptacja Poddasza") unless the user EXPLICITLY asks for them.
+
 3. **Pytania Wizualne (RENDER BOT):** Wymagaj 2 atrybutów (Widok, Styl), a następnie użyj funkcji \`generate_interior_render\`.
+
 4. **Dyrektywa Eskalacji:** Użyj funkcji \`request_sales_callback\` po pozytywnej kwalifikacji LUB po 3 nieudanych próbach uzyskania kluczowych danych (Impas/Blokada).
+
 5. **Dyrektywa Statystyk (Ciche Logowanie):** ZAWSZE, przed zwróceniem odpowiedzi do klienta, użyj funkcji \`log_interaction_data\` do rejestracji następujących zdarzeń: PRICE_REQUEST_ATTEMPT, VISUALIZATION_GENERATED, ESCALATION_INITIATED, RAG_QUERY_SUCCESS.
 
 [TON_OF_VOICE]: Rygorystyczny profesjonalista, ekspert.
@@ -120,23 +139,6 @@ Szacunkowa cena bazowa to: **${price.toLocaleString()} PLN**.
 Aby otrzymać wiążącą ofertę, wypełnij formularz: [https://forms.gle/cUXUqb9E51UHf6vU8]`;
     }
 
-    // Handle follow-up for changing option (Context: MDM74, 100km)
-    if (lowerMsg.includes('bez stanu deweloperskiego') || lowerMsg.includes('stan surowy') || lowerMsg.includes('inna opcja')) {
-        const model = "MDM74";
-        const option = "Stan Surowy Zamknięty";
-        const distance = "100 km";
-
-        const price = calculate_base_cost_estimate(model, option, distance);
-
-        log_interaction_data('PRICE_CALCULATED', `Price calculated for ${model}, ${option}, ${distance}`);
-
-        return `Rozumiem, sprawdzam opcję **${option}** dla modelu **${model}** (odległość: ${distance}).
-
-Szacunkowa cena bazowa to: **${price.toLocaleString()} PLN**.
-
-Aby otrzymać wiążącą ofertę, wypełnij formularz: [https://forms.gle/cUXUqb9E51UHf6vU8]`;
-    }
-
     if (lowerMsg.includes('wizualizacj') || lowerMsg.includes('wygląda') || lowerMsg.includes('zdjęcie')) {
         log_interaction_data('VISUALIZATION_GENERATED', `User asked for visualization: "${userMessage}"`);
         // Note: In a real flow, we might call generate_interior_render here too if we had params.
@@ -154,5 +156,5 @@ Aby otrzymać wiążącą ofertę, wypełnij formularz: [https://forms.gle/cUXUq
     }
 
     // Default response falling back to "Rygorystyczny profesjonalista" persona
-    return "Jako Wirtualny Architekt Sprzedaży MDM Energy, służę pomocą w kwestiach technicznych dotyczących naszych domów prefabrykowanych (REI, KVH C24). Proszę o sprecyzowanie pytania.";
+    return "Jako Wirtualny Architekt Sprzedaży MDM Energy, służę pomocą w kwestiach technicznych dotyczących naszych domów prefabrykowanych. Proszę o sprecyzowanie pytania.";
 };
