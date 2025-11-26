@@ -5,7 +5,7 @@ import ragText from '../data/baza_wiedzy_mdm.txt?raw';
 
 // 🔥 HARDCODED KEY - OSTATECZNA PRÓBA 🔥
 // Wklej tu swój klucz (zachowaj cudzysłowy!)
-const API_KEY = AIzaSyDGmaZpOb8pD0FDwqTqsuPCOi4xkyHJsgE; 
+const API_KEY = "AIzaSyDGmaZpOb8pD0FDwqTqsuPCOi4xkyHJsgE"; 
 
 export const processUserMessage = async (userMessage: string): Promise<string> => {
     // Diagnostyka widoczna w odpowiedzi bota (żebyś wiedział, że to nowa wersja)
