@@ -328,7 +328,7 @@ O: Projekty oferują dużą elastyczność:
 4. Przechowywanie: Opcja wydzielenia spiżarni w mniejszych modelach.
 
 === CENNIK DOMÓW MDM ENERGY (LISTOPAD 2025) ===
-P: Co zawiera Zestaw Podstawowy (Stan Surowy Zamknięty) w ofercie MDM Energy?
+P: Co zawiera Zestaw Podstawowy (Stan Surowy Zamknięty bez Płyty Fundamentowej) w ofercie MDM Energy?
 O: Zestaw Podstawowy (ceny brutto 8%) obejmuje:
 - Ściany szkieletowe z drewna klejonego KVH C24 ocieplone, wykończone od wewnątrz konstrukcyjną płytą GK.
 - Elewację na styropianie grafitowym gr. 12 cm zakończoną klejem z siatką.
@@ -339,8 +339,12 @@ O: Zestaw Podstawowy (ceny brutto 8%) obejmuje:
 - Pokrycie dachu blachodachówką, podsufitkę stalową, orynnowanie PVC.
 - Transport na plac budowy, usługi dźwigu i rusztowania do montażu.
 
+P: Co obejmuje dopłata za Płytę Fundamentową?
+O: Dopłata obejmuje wykonanie płyty fundamentowej o grubości 200 mm z instalacją podposadzkową i przepustami, bez prac ziemnych (ceny brutto 8%).
+
 P: Co zawiera dopłata za Stan Deweloperski?
-O: Dopłata za Stan Deweloperski (ceny brutto 8%) obejmuje dodatkowo:
+O: Stan Deweloperski (ceny brutto 8%) obejmuje dodatkowo:
+- Płytę Fundamentową (bez prac ziemnych)
 - Izolację termiczną stropu (dolny pas wiązarów dachowych) wełną mineralną 200 mm + 100 mm.
 - Schody strychowe, sufit podwieszany z płyt GK.
 - Wykończenie elewacji: tynk akrylowy w kolorze białym plus wstawki antracytowe, tynk mozaikowy.
@@ -350,75 +354,95 @@ O: Dopłata za Stan Deweloperski (ceny brutto 8%) obejmuje dodatkowo:
 - Instalację centralnego ogrzewania: elektryczna (folia grzewcza), zbiornik c.w.u.
 - Wentylację grawitacyjną (kominki dachowe).
 
-P: Co obejmuje dopłata za Płytę Fundamentową?
-O: Dopłata obejmuje wykonanie płyty fundamentowej o grubości 200 mm z instalacją podposadzkową i przepustami, bez prac ziemnych (ceny brutto 8%).
-
-=== CENY POSZCZEGÓLNYCH MODELI ===
+=== CENY ORIENTACYJNE POSZCZEGÓLNYCH MODELI ===
 P: Jaka jest cena modelu MDM Optimal 58?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 58,0 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 207 380 zł | Stan Deweloperski (Razem): 327 060 zł | Fundament: 32 240 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 212 000 zł | Stan Deweloperski (Razem): 334 720 zł | Fundament: 33 240 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 222 190 zł | Stan Deweloperski (Razem): 348 430 zł | Fundament: 34 900 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 207 380 zł | Płyta Fundamentowa: 32 240 zł. | Stan Deweloperski (Pakiet Kompletny): 327 060 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 212 000 zł | Płyta Fundamentowa: 33 240 zł. | Stan Deweloperski (Pakiet Kompletny): 334 720 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 222 190 zł | Płyta Fundamentowa: 34 900 zł. | Stan Deweloperski (Pakiet Kompletny): 348 430 zł
+
+Model MDM 58 - Galeria:
+- Rzut parteru: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM-58-parter.png
+- Rzut poddasza: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM-58-poddasze.png
+- Wizualizacja 1: https://mdmenergy.pl/wp-content/uploads/2025/10/Zdjecie-WhatsApp-2025-08-28-o-12.07.27_686be5fb.jpg
+- Wizualizacja 2: https://mdmenergy.pl/wp-content/uploads/2025/10/IMG-20251008-WA0003-scaled.jpg 
+- Wizualizacja 3: https://mdmenergy.pl/wp-content/uploads/2025/10/IMG-20251008-WA0006-scaled.jpg
 
 P: Jaka jest cena modelu MDM Optimal 74?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 74,0 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 243 090 zł | Stan Deweloperski (Razem): 384 830 zł | Fundament: 40 740 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 248 440 zł | Stan Deweloperski (Razem): 393 920 zł | Fundament: 42 020 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 260 360 zł | Stan Deweloperski (Razem): 409 860 zł | Fundament: 44 120 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 243 090 zł | Płyta Fundamentowa: 40 740 zł. | Stan Deweloperski (Pakiet Kompletny): 384 830 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 248 440 zł | Płyta Fundamentowa: 42 020 zł. | Stan Deweloperski (Pakiet Kompletny): 393 920 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 260 360 zł | Płyta Fundamentowa: 44 120 zł. | Stan Deweloperski (Pakiet Kompletny): 409 860 zł
+
+Model MDM 74 - Galeria:
+- Rzut parteru wersja A: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM74-A-parter.png
+- Rzut poddasza wersja A: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM74-A-poddasze.png
+- Rzut parteru wersja B: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM74-B-parter.png
+- Rzut poddasza wersja B: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM74-B-poddasze.png 
+- Wizualizacja 1: https://mdmenergy.pl/wp-content/uploads/2024/08/Image1_001-scaled.jpg
+- Wizualizacja 2: https://mdmenergy.pl/wp-content/uploads/2024/08/Image2-2-scaled.jpg
 
 P: Jaka jest cena modelu MDM Optimal 82?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 82,0 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 273 330 zł | Stan Deweloperski (Razem): 426 380 zł | Fundament: 45 420 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 279 280 zł | Stan Deweloperski (Razem): 436 400 zł | Fundament: 46 840 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 292 420 zł | Stan Deweloperski (Razem): 453 730 zł | Fundament: 49 180 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 273 330 zł | Płyta Fundamentowa: 45 420 zł. | Stan Deweloperski (Pakiet Kompletny): 426 380 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 279 280 zł | Płyta Fundamentowa: 46 840 zł. | Stan Deweloperski (Pakiet Kompletny): 436 400 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 292 420 zł | Płyta Fundamentowa: 49 180 zł. | Stan Deweloperski (Pakiet Kompletny): 453 730 zł
+
+Model MDM 82 - Galeria:
+- Rzut parteru wersja A: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM82-A-RZUT-PARTERU.png
+- Rzut poddasza wersja A: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM82-A-RZUT-PODDASZA.png
+- Rzut parteru wersja B: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM82-B-RZUT-PARTERU.png
+- Rzut poddasza wersja B: https://mdmenergy.pl/wp-content/uploads/2024/09/MDM82-B-RZUT-PODDASZA.png 
+- Wizualizacja 1: https://mdmenergy.pl/wp-content/uploads/2025/03/Image1-scaled.jpg
+- Wizualizacja 2: https://mdmenergy.pl/wp-content/uploads/2025/03/Image2-scaled.jpg
 
 P: Jaka jest cena modelu MDM Optimal Z273A?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 106,5 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 323 140 zł | Stan Deweloperski (Razem): 524 190 zł | Fundament: 58 140 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 331 180 zł | Stan Deweloperski (Razem): 537 800 zł | Fundament: 59 960 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 350 260 zł | Stan Deweloperski (Razem): 561 580 zł | Fundament: 62 960 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 323 140 zł | Płyta Fundamentowa: 58 140 zł. | Stan Deweloperski (Pakiet Kompletny): 524 190 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 331 180 zł | Płyta Fundamentowa: 59 960 zł. | Stan Deweloperski (Pakiet Kompletny): 537 800 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 350 260 zł | Płyta Fundamentowa: 62 960 zł. | Stan Deweloperski (Pakiet Kompletny): 561 580 zł
 
 P: Jaka jest cena modelu MDM 58 BIS?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 93,5 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 270 860 zł | Stan Deweloperski (Razem): 436 570 zł | Fundament: 32 240 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 276 690 zł | Stan Deweloperski (Razem): 446 520 zł | Fundament: 33 240 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 291 650 zł | Stan Deweloperski (Razem): 465 050 zł | Fundament: 34 900 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 270 860 zł | Płyta Fundamentowa: 32 240 zł. | Stan Deweloperski (Pakiet Kompletny): 436 570 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 276 690 zł | Płyta Fundamentowa: 33 240 zł. | Stan Deweloperski (Pakiet Kompletny): 446 520 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 291 650 zł | Płyta Fundamentowa: 34 900 zł. | Stan Deweloperski (Pakiet Kompletny): 465 050 zł
 
 P: Jaka jest cena modelu MDM STODOŁA 77?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 92,0 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 309 000 zł | Stan Deweloperski (Razem): 462 370 zł | Fundament: 32 240 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 314 890 zł | Stan Deweloperski (Razem): 472 290 zł | Fundament: 33 240 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 330 030 zł | Stan Deweloperski (Razem): 490 930 zł | Fundament: 34 900 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 309 000 zł | Płyta Fundamentowa: 32 240 zł. | Stan Deweloperski (Pakiet Kompletny): 462 370 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 314 890 zł | Płyta Fundamentowa: 33 240 zł. | Stan Deweloperski (Pakiet Kompletny): 472 290 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 330 030 zł | Płyta Fundamentowa: 34 900 zł. | Stan Deweloperski (Pakiet Kompletny): 490 930 zł
 
 P: Jaka jest cena modelu MDM 70?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 73,3 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 245 300 zł | Stan Deweloperski (Razem): 395 090 zł | Fundament: 41 450 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 251 180 zł | Stan Deweloperski (Razem): 405 100 zł | Fundament: 42 750 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 265 910 zł | Stan Deweloperski (Razem): 423 680 zł | Fundament: 44 800 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 245 300 zł | Płyta Fundamentowa: 41 450 zł. | Stan Deweloperski (Pakiet Kompletny): 395 090 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 251 180 zł | Płyta Fundamentowa: 42 750 zł. | Stan Deweloperski (Pakiet Kompletny): 405 100 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 265 910 zł | Płyta Fundamentowa: 44 800 zł. | Stan Deweloperski (Pakiet Kompletny): 423 680 zł
 
 P: Jaka jest cena modelu MDM 80?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 80,5 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 263 240 zł | Stan Deweloperski (Razem): 424 330 zł | Fundament: 45 290 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 269 540 zł | Stan Deweloperski (Razem): 435 080 zł | Fundament: 46 710 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 285 110 zł | Stan Deweloperski (Razem): 454 670 zł | Fundament: 49 000 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 263 240 zł | Płyta Fundamentowa: 45 290 zł. | Stan Deweloperski (Pakiet Kompletny): 424 330 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 269 540 zł | Płyta Fundamentowa: 46 710 zł. | Stan Deweloperski (Pakiet Kompletny): 435 080 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 285 110 zł | Płyta Fundamentowa: 49 000 zł. | Stan Deweloperski (Pakiet Kompletny): 454 670 zł
 
 P: Jaka jest cena modelu MDM 90?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 93,5 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 286 330 zł | Stan Deweloperski (Razem): 472 660 zł | Fundament: 52 450 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 292 990 zł | Stan Deweloperski (Razem): 484 350 zł | Fundament: 54 090 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 309 850 zł | Stan Deweloperski (Razem): 505 740 zł | Fundament: 56 800 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 286 330 zł | Płyta Fundamentowa: 52 450 zł. | Stan Deweloperski (Pakiet Kompletny): 472 660 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 292 990 zł | Płyta Fundamentowa: 54 090 zł. | Stan Deweloperski (Pakiet Kompletny): 484 350 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 309 850 zł | Płyta Fundamentowa: 56 800 zł. | Stan Deweloperski (Pakiet Kompletny): 505 740 zł
 
 P: Jaka jest cena modelu MDM 110?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 113,0 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 337 820 zł | Stan Deweloperski (Razem): 553 510 zł | Fundament: 62 790 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 345 680 zł | Stan Deweloperski (Razem): 567 280 zł | Fundament: 64 750 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 365 100 zł | Stan Deweloperski (Razem): 591 780 zł | Fundament: 67 990 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 337 820 zł | Płyta Fundamentowa: 62 790 zł. | Stan Deweloperski (Pakiet Kompletny): 553 510 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 345 680 zł | Płyta Fundamentowa: 64 750 zł. | Stan Deweloperski (Pakiet Kompletny): 567 280 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 365 100 zł | Płyta Fundamentowa: 67 990 zł. | Stan Deweloperski (Pakiet Kompletny): 591 780 zł
 
 P: Jaka jest cena modelu DM1?
 O: Cena zależy od lokalizacji montażu. Powierzchnia podłóg: 136,0 m².
-- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 405 630 zł | Stan Deweloperski (Razem): 597 420 zł | Fundament: 38 910 zł.
-- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 414 480 zł | Stan Deweloperski (Razem): 610 580 zł | Fundament: 40 130 zł.
-- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 434 290 zł | Stan Deweloperski (Razem): 634 740 zł | Fundament: 42 140 zł.
+- Lokalizacja do 30 km od zakładu: Zestaw Podstawowy: 405 630 zł | Płyta Fundamentowa: 38 910 zł. | Stan Deweloperski (Pakiet Kompletny): 597 420 zł
+- Lokalizacja do 100 km od zakładu: Zestaw Podstawowy: 414 480 zł | Płyta Fundamentowa: 40 130 zł. | Stan Deweloperski (Pakiet Kompletny): 610 580 zł
+- Lokalizacja do 300 km od zakładu: Zestaw Podstawowy: 434 290 zł | Płyta Fundamentowa: 42 140 zł. | Stan Deweloperski (Pakiet Kompletny): 634 740 zł
 
 *** DODATKOWE DOPŁATY I OPCJE (CENNIK 2025) ***
 
@@ -546,3 +570,64 @@ O: Opcja adaptacji poddasza (dostępna dla wybranych modeli, np. MDM Optimal) ob
 - Komunikacja: Schody z drewna iglastego (montowane w zamian za standardowe schody strychowe).
 - Instalacje i sanitariaty: Stelaż podtynkowy WC, 3 dodatkowe punkty wod-kan oraz zwiększona powierzchnia instalacji grzewczej.
 - Inne: Dodatkowa powierzchnia uwzględniona w pracach wykończeniowych (szpachlowanie).
+
+=== PRZEDMIOT UMOWY I ZAKRES ===
+P: Czego dotyczy umowa z MDM Energy?
+O: Przedmiotem umowy jest wybudowanie przez Wykonawcę (MDM Energy) budynku mieszkalnego jednorodzinnego w technologii szkieletowej prefabrykowanej na działce Inwestora. Dokładny model domu oraz zakres prac (np. Stan Podstawowy lub Deweloperski) określają załączniki do umowy.
+
+P: Co jest podstawą do realizacji prac?
+O: Podstawą są: Projekt Budowlany (lub projekt typowy dostosowany do działki), uzyskane pozwolenie na budowę (lub skuteczne zgłoszenie) oraz Specyfikacja Techniczna zawarta w załączniku do umowy.
+
+=== PŁATNOŚCI I GWARANCJA CENY ===
+P: Czy cena w umowie jest stała?
+O: Tak. Wykonawca gwarantuje stałość ceny ustalonej w umowie przez okres 12 miesięcy od dnia jej podpisania (Gwarancja Ceny). Chroni to Inwestora przed inflacją i wzrostem kosztów materiałów w tym okresie.
+
+P: Jak wygląda harmonogram płatności?
+O: Płatności są rozłożone na etapy (transze), płatne zazwyczaj w następującej kolejności:
+1. Zadatek przy podpisaniu umowy (uruchomienie prac projektowych/administracyjnych).
+2. Płatność po złożeniu wniosku o pozwolenie na budowę/zgłoszenie.
+3. Płatność przed rozpoczęciem prefabrykacji (zamówienie materiałów).
+4. Płatność przed wyjazdem elementów na plac budowy (montaż).
+5. Płatność końcowa po odbiorze budynku.
+
+=== OBOWIĄZKI STRON (INWESTOR VS WYKONAWCA) ===
+P: Jakie są główne obowiązki Inwestora (Klienta)?
+O: Do obowiązków Inwestora należy:
+- Przekazanie placu budowy.
+- Zapewnienie mediów budowlanych (prąd, woda) na czas budowy.
+- Zlecenie geodezyjnego wytyczenia budynku (osi) przez uprawnionego geodetę.
+- Terminowe regulowanie płatności zgodnie z harmonogramem.
+- Dokonanie odbioru końcowego prac.
+
+P: Jakie są obowiązki Wykonawcy (MDM Energy)?
+O: Wykonawca zobowiązuje się do:
+- Wykonania budynku zgodnie z projektem, sztuką budowlaną i przepisami prawa.
+- Zapewnienia materiałów (certyfikowane drewno KVH, materiały izolacyjne itp.).
+- Utrzymania porządku na terenie budowy w trakcie prac oraz wywozu odpadów budowlanych powstałych w wyniku jego działań.
+- Posiadania ubezpieczenia OC działalności gospodarczej.
+
+=== GWARANCJA I ODBIORY ===
+P: Ile wynosi gwarancja na dom?
+O: MDM Energy udziela:
+- 30 lat gwarancji na konstrukcję nośną budynku (statyka, sztywność).
+- Standardowej rękojmi/gwarancji na pozostałe prace budowlane (zgodnie z Kodeksem Cywilnym, zazwyczaj 5 lat).
+- Na elementy wyposażenia (okna, drzwi, pokrycie dachowe) obowiązują gwarancje ich producentów.
+
+P: Jak wygląda procedura odbioru domu?
+O: Po zakończeniu prac strony spisują Protokół Odbioru Końcowego. W przypadku stwierdzenia usterek, zostają one wpisane do protokołu wraz z terminem ich usunięcia przez Wykonawcę. Podpisanie protokołu (bez usterek lub po ich usunięciu) jest podstawą do wystawienia faktury końcowej.
+
+=== TERMINY I ROZWIĄZANIE UMOWY ===
+P: Kiedy rozpoczyna się budowa?
+O: Termin rozpoczęcia prac jest uzależniony od uzyskania prawomocnego pozwolenia na budowę (lub braku sprzeciwu do zgłoszenia) oraz przygotowania fundamentu (jeśli fundament leży po stronie Inwestora).
+
+P: Czy można odstąpić od umowy?
+O: Tak, umowa przewiduje warunki odstąpienia dla obu stron, np. w przypadku rażących opóźnień w płatnościach (ze strony Inwestora) lub rażących opóźnień w realizacji prac (ze strony Wykonawcy), a także w sytuacjach losowych (siła wyższa).
+
+=== MULTIMEDIA I WIDEO ===
+Mały dom prefabrykowany MDM Energy:
+- Link wideo: https://www.youtube.com/watch?v=tDT9Mhy3z34
+- Miniatura: https://img.youtube.com/vi/tDT9Mhy3z34/0.jpg
+
+Wirtualny spacer po modelu MDM 58:
+- Link wideo: https://www.youtube.com/watch?v=SLfPEm1Cu90
+- Miniatura: https://img.youtube.com/vi/SLfPEm1Cu90/0.jpg

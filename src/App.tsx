@@ -11,8 +11,9 @@ interface Message {
 }
 
 function App() {
+  // Forced Greeting Update
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'model', content: 'Witaj! Jestem Wirtualnym Architektem Sprzedaży MDM Energy. W czym mogę pomóc?' }
+    { role: 'model', content: 'Witaj! Jestem Wirtualnym Pomocnikiem MDM Energy. W czym mogę pomóc?' }
   ]);
 
   const handleSend = async (text: string) => {
