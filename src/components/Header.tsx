@@ -132,11 +132,12 @@ const Header: React.FC = () => {
                             lineHeight: '1.6',
                             marginBottom: '25px'
                         }}>
-                            <li><strong>Ceny i modele:</strong> 'Ile kosztuje MDM 74?'</li>
-                            <li><strong>Technologia:</strong> 'Jaka jest klasa REI?'</li>
-                            <li><strong>Formalności:</strong> 'Czy trzeba pozwolenie?'</li>
-                            <li><strong>Kontakt:</strong> 'Chcę rozmawiać z doradcą'</li>
-                            <li><strong>Spotkanie:</strong> 'Umów wideo-rozmowę przez Google'</li>
+                            <li><strong>Ceny i modele:</strong> O cenach naszych typowych domów</li>
+                            <li><strong>Wizualizacje:</strong> O tym, jak wyglądają nasze domy</li>
+                            <li><strong>Technologia:</strong> O technologii, jaką stosujemy</li>
+                            <li><strong>Formalności:</strong> O formalnościach, które musimy załatwić</li>
+                            <li><strong>Kontakt:</strong> Gdzie można zobaczyć nasze domy</li>
+                            <li><strong>Spotkanie:</strong> Jak zamówić wycenę albo umówić się na spotkanie</li>
                         </ul>
 
                         <button
