@@ -93,7 +93,11 @@ PYTANIE KLIENTA: "${message}" `;
             const modelPrimary = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
             const result = await modelPrimary.generateContent(fullPrompt);
             const response = result.response;
-            const text = response.text();
+            let text = response.text();
+
+            // 🛡️ LINK SAFETY PATCH:
+            const CORRECT_FORM_URL = "https://forms.gle/cUXUqb9E51UHf6vU8";
+            text = text.replace(/https:\/\/forms\.gle\/[a-zA-Z0-9]+/g, CORRECT_FORM_URL);
 
             // Check for contact intent override
             let finalText = text;
@@ -114,7 +118,11 @@ PYTANIE KLIENTA: "${message}" `;
                 const modelFallback = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
                 const result = await modelFallback.generateContent(fullPrompt);
                 const response = result.response;
-                const text = response.text();
+                let text = response.text();
+
+                // 🛡️ LINK SAFETY PATCH (Fallback):
+                const CORRECT_FORM_URL = "https://forms.gle/cUXUqb9E51UHf6vU8";
+                text = text.replace(/https:\/\/forms\.gle\/[a-zA-Z0-9]+/g, CORRECT_FORM_URL);
 
                 res.json({ reply: text + "\n\n_(Wygenerowano modelem 2.0 Flash Exp)_" });
 
