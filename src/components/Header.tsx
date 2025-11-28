@@ -132,12 +132,12 @@ const Header: React.FC = () => {
                             lineHeight: '1.6',
                             marginBottom: '25px'
                         }}>
-                            <li><strong>Ceny i modele:</strong> O cenach naszych typowych domów</li>
-                            <li><strong>Wizualizacje:</strong> O tym, jak wyglądają nasze domy</li>
-                            <li><strong>Technologia:</strong> O technologii, jaką stosujemy</li>
-                            <li><strong>Formalności:</strong> O formalnościach, które musimy załatwić</li>
-                            <li><strong>Kontakt:</strong> Gdzie można zobaczyć nasze domy</li>
-                            <li><strong>Spotkanie:</strong> Jak zamówić wycenę albo umówić się na spotkanie</li>
+                            <li>O cenach naszych typowych domów</li>
+                            <li>O tym, jak wyglądają nasze domy</li>
+                            <li>O technologii, jaką stosujemy</li>
+                            <li>O formalnościach, które musimy załatwić</li>
+                            <li>Gdzie można zobaczyć nasze domy</li>
+                            <li>Jak zamówić wycenę albo umówić się na spotkanie</li>
                         </ul>
 
                         <button

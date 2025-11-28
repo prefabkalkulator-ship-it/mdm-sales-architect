@@ -59,7 +59,10 @@ const InputArea: React.FC<InputAreaProps> = ({ onSend }) => {
                 const lon = position.coords.longitude;
                 const distance = calculateDistance(lat, lon, FACTORY_LAT, FACTORY_LON);
 
-                const locationMessage = `Sprawdziłem lokalizację GPS: Znajduję się ok. ${distance} km w linii prostej od Waszego zakładu produkcyjnego.`;
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const precisionNote = isMobile ? "" : " (Uwaga: Lokalizacja z komputera może być przybliżona)";
+
+                const locationMessage = `Sprawdziłem lokalizację GPS: Znajduję się ok. ${distance} km w linii prostej od Waszego zakładu produkcyjnego.${precisionNote}`;
 
                 onSend(locationMessage);
                 setIsLocating(false);
