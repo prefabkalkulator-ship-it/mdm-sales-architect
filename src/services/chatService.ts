@@ -9,14 +9,14 @@ export interface ChatMessage {
  * Sends the user message to the backend proxy /api/chat.
  * The backend handles the Gemini API call and RAG logic.
  */
-export const processUserMessage = async (userMessage: string): Promise<string> => {
+export const processUserMessage = async (userMessage: string, history: any[] = []): Promise<string> => {
     try {
         log_interaction_data('PROXY_API_CALL', `Sending query to backend proxy: "${userMessage}"`);
 
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: userMessage })
+            body: JSON.stringify({ message: userMessage, history: history })
         });
 
         if (!response.ok) {

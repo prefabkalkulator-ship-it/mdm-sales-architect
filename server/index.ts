@@ -39,7 +39,7 @@ try {
 
 app.post('/api/chat', async (req: Request, res: Response) => {
     try {
-        const { message } = req.body;
+        const { message, history } = req.body;
         console.log(`[USER_QUERY] Pytanie klienta: "${message}"`);
         const API_KEY = process.env.GEMINI_API_KEY;
 
@@ -50,6 +50,15 @@ app.post('/api/chat', async (req: Request, res: Response) => {
         }
 
         const genAI = new GoogleGenerativeAI(API_KEY);
+
+        // Format history (last 10 messages)
+        let formattedHistory = "";
+        if (history && Array.isArray(history)) {
+            formattedHistory = history.slice(-10).map((msg: any) => {
+                const role = msg.role === 'user' ? 'User' : 'Model';
+                return `${role}: ${msg.content}`;
+            }).join('\n');
+        }
 
         const fullPrompt = `
 Jesteś Wirtualnym Doradcą Klienta MDM Energy.
@@ -85,7 +94,10 @@ BEZPIECZEŃSTWO CENOWE (CRITICAL):
 
 STYL: Bądź pomocny, używaj języka korzyści (marketingowego), ale trzymaj się faktów z bazy.
 
-PYTANIE KLIENTA: "${message}" `;
+HISTORIA ROZMOWY:
+${formattedHistory}
+
+AKTUALNE PYTANIE: "${message}" `;
 
         try {
             // PRÓBA 1: GEMINI 2.5 FLASH (PRIMARY)

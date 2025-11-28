@@ -37,7 +37,12 @@ function App() {
 
     // Process with simulated Gemini service
     try {
-      const responseText = await processUserMessage(text);
+      // Filter history: remove errors, loading states, and keep only role/content
+      const history = messages
+        .filter(m => m.role === 'user' || m.role === 'model')
+        .map(m => ({ role: m.role, content: m.content }));
+
+      const responseText = await processUserMessage(text, history);
       const modelMsg: Message = { role: 'model', content: responseText };
       setMessages(prev => [...prev, modelMsg]);
     } catch (error) {
