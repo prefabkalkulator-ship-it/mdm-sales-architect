@@ -105,3 +105,50 @@ button:focus-visible {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   pointer-events: none;
 }
+
+/* Snow Animation */
+.snow-bg {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.snow-bg::before,
+.snow-bg::after {
+  content: "";
+  position: fixed;
+  top: -10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: radial-gradient(4px 4px at 100px 50px, #fff, transparent),
+    radial-gradient(6px 6px at 200px 150px, #fff, transparent),
+    radial-gradient(3px 3px at 300px 250px, #fff, transparent),
+    radial-gradient(4px 4px at 400px 350px, #fff, transparent),
+    radial-gradient(6px 6px at 500px 100px, #fff, transparent),
+    radial-gradient(3px 3px at 600px 400px, #fff, transparent),
+    radial-gradient(4px 4px at 700px 300px, #fff, transparent),
+    radial-gradient(6px 6px at 800px 200px, #fff, transparent);
+  background-size: 600px 600px;
+  opacity: 0.3;
+  animation: snow 10s linear infinite;
+}
+
+.snow-bg::after {
+  margin-left: -200px;
+  opacity: 0.2;
+  animation-duration: 15s;
+  animation-direction: reverse;
+  filter: blur(1px);
+}
+
+@keyframes snow {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(600px);
+  }
+}

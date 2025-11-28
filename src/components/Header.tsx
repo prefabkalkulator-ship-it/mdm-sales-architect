@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/global.css';
 
 const Header: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Seasonal Logic
+    const now = new Date();
+    const month = now.getMonth();
+    const day = now.getDate();
+    const isHolidaySeason = month === 11 || (month === 0 && day <= 4);
+
+    useEffect(() => {
+        if (isHolidaySeason) {
+            document.body.classList.add('snow-bg');
+        } else {
+            document.body.classList.remove('snow-bg');
+        }
+        return () => {
+            document.body.classList.remove('snow-bg');
+        };
+    }, [isHolidaySeason]);
 
     const handleInfoClick = () => {
         setIsModalOpen(true);
@@ -45,7 +62,7 @@ const Header: React.FC = () => {
                         color: '#FFFFFF', // White text
                         margin: 0
                     }}>
-                        Wirtualny Pomocnik MDM Energy
+                        Wirtualny Pomocnik MDM Energy {isHolidaySeason && <span style={{ fontSize: '1.2em' }}>🎄</span>}
                     </h1>
                 </div>
 
