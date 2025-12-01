@@ -76,17 +76,19 @@ const InputArea: React.FC<InputAreaProps> = ({ onSend }) => {
     };
 
     const handleVoiceInput = () => {
-        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-            alert("Twoja przeglądarka nie obsługuje rozpoznawania mowy.");
+        // Wybierz standardową wersję LUB wersję Apple (webkit)
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (!SpeechRecognition) {
+            alert("Twoja przeglądarka nie obsługuje rozpoznawania mowy. Spróbuj Safari lub Chrome.");
             return;
         }
 
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
 
         recognition.lang = 'pl-PL';
-        recognition.continuous = false;
         recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
 
         recognition.onstart = () => {
             setIsListening(true);
@@ -99,13 +101,13 @@ const InputArea: React.FC<InputAreaProps> = ({ onSend }) => {
         recognition.onresult = (event: any) => {
             const transcript = event.results[0][0].transcript;
             setMessage(transcript);
-            // Optional: Auto-send
-            // onSend(transcript);
-            // setMessage('');
         };
 
         recognition.onerror = (event: any) => {
             console.error("Speech recognition error", event.error);
+            if (event.error === 'not-allowed') {
+                alert("Brak dostępu do mikrofonu. Sprawdź Ustawienia -> Safari -> Mikrofon");
+            }
             setIsListening(false);
         };
 
